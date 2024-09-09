@@ -5,8 +5,7 @@ import Link from "next/link";
 
 export default function NewsCards({ newsItems }) {
   return (
-    <div className="container mx-auto p-4">
-      <h1 className="text-3xl font-bold mb-6 text-center">Latest News</h1>
+    <div className="container mx-auto py-4">
       <div className="flex flex-wrap -mx-2">
         {newsItems.map((item) => (
           <div
@@ -21,6 +20,7 @@ export default function NewsCards({ newsItems }) {
                     alt={item.title}
                     width={300}
                     height={300}
+                    priority
                     className="w-full h-44 object-cover rounded-t-lg"
                   />
                   <p className="p-4 font-thin italic text-sm">{item.date}</p>
