@@ -18,7 +18,7 @@ export default function RootLayout({ children }) {
     <html lang="en" className={openSans.className}>
       <body className="h-screen bg-[#f6f7f9]">
         <Navbar />
-        <main className="mt-20 md:mx-20 sm:mx-10 mx-2">{children}</main>
+        <main className="mt-24 md:mx-20 sm:mx-10 mx-2">{children}</main>
       </body>
     </html>
   );
