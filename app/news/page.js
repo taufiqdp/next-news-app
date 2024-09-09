@@ -1,17 +1,7 @@
-import Link from "next/link";
+import NewsCards from "@/components/news-cards";
+
+import { DUMMY_NEWS } from "@/dummy-data";
 
 export default function NewsPage() {
-  const news = ["News 1", "News 2", "News 3"];
-
-  return (
-    <>
-      <ul>
-        {news.map((item, i) => (
-          <li key={i}>
-            <Link href={`news/${i}`}>{item}</Link>
-          </li>
-        ))}
-      </ul>
-    </>
-  );
+  return <NewsCards newsItems={DUMMY_NEWS} />;
 }
