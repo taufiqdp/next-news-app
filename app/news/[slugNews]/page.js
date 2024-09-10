@@ -1,5 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
+import fs from "node:fs";
+
 import { CalendarIcon, ExternalLink, ArrowLeft } from "lucide-react";
 import { notFound } from "next/navigation";
 
@@ -13,7 +15,7 @@ export default function Component({ params }) {
     notFound();
   } else {
     return (
-      <div className="flex flex-col gap-5 px-4 py-8">
+      <div className="flex flex-col gap-5">
         <Link
           href="/news"
           className="flex gap-2 w-fit px-2 py-1 rounded-lg hover:bg-black hover:text-white"
@@ -23,9 +25,12 @@ export default function Component({ params }) {
         </Link>
         <div className="flex md:flex-row flex-col gap-10">
           <Image
-            src={`/images/news/${newsItem.image}`}
+            src={
+              fs.existsSync(`public/images/news/${newsItem.image}`)
+                ? `/images/news/${newsItem.image}`
+                : "/images/news/default-image.jpg"
+            }
             alt={newsItem.title || "Untitled Article"}
-            objectFit="cover"
             priority
             width={400}
             height={300}
