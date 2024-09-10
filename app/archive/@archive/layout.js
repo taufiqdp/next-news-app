@@ -1,7 +1,11 @@
+"use client";
+
 import { getAvailableNewsYears } from "@/lib/news";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 export default function ArchivePage({ children }) {
+  const path = usePathname();
   const years = getAvailableNewsYears();
   return (
     <>
@@ -12,7 +16,12 @@ export default function ArchivePage({ children }) {
             <li key={year}>
               <Link
                 href={`/archive/${year}`}
-                className="hover:underline hover:underline-offset-4"
+                className={`${
+                  path === `/archive/${year}`
+                    ? "underline underline-offset-4"
+                    : "underline-offset-4"
+                }
+                    hover:underline`}
               >
                 {year}
               </Link>
