@@ -26,6 +26,7 @@ export default function ImageNewsPage({ params }) {
             src={`/images/news/${newsItem.image}`}
             width={600}
             height={600}
+            priority
             alt={newsItem.title || "Untitled Article"}
             className="rounded-lg"
           />
