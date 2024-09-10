@@ -1,11 +1,7 @@
-"use client";
-
 import { getAvailableNewsYears } from "@/lib/news";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 
 export default function ArchivePage({ children }) {
-  const path = usePathname();
   const years = getAvailableNewsYears();
   return (
     <>
@@ -14,15 +10,7 @@ export default function ArchivePage({ children }) {
         <ul className="flex gap-8 font-medium">
           {years.map((year) => (
             <li key={year}>
-              <Link
-                href={`/archive/${year}`}
-                className={`${
-                  path === `/archive/${year}`
-                    ? "underline underline-offset-4"
-                    : "underline-offset-4"
-                }
-                    hover:underline`}
-              >
+              <Link href={`/archive/${year}`} className={`hover:underline`}>
                 {year}
               </Link>
             </li>

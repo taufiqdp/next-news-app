@@ -4,11 +4,11 @@ import { notFound } from "next/navigation";
 import { ArrowLeft } from "lucide-react";
 
 import { CalendarIcon, ExternalLink } from "lucide-react";
-import { DUMMY_NEWS } from "@/dummy-data";
+import { getAllNews } from "@/lib/news";
 
 export default function DetailNewsPage({ params }) {
   const newsSlug = params.slugNews;
-  const newsItem = DUMMY_NEWS.find((newsItem) => newsItem.slug === newsSlug);
+  const newsItem = getAllNews().find((newsItem) => newsItem.slug === newsSlug);
 
   if (!newsItem) {
     notFound();

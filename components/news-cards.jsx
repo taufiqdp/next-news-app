@@ -2,7 +2,6 @@ import { Card, CardContent } from "@/components/ui/card";
 
 import Image from "next/image";
 import Link from "next/link";
-import fs from "node:fs";
 
 export default function NewsCards({ newsItems }) {
   return (
@@ -17,11 +16,7 @@ export default function NewsCards({ newsItems }) {
               <Card className="h-full transition-all duration-200 ease-in-out hover:shadow-lg rounded-lg">
                 <CardContent className="p-0">
                   <Image
-                    src={
-                      fs.existsSync(`public/images/news/${item.image}`)
-                        ? `/images/news/${item.image}`
-                        : "/images/news/default-image.jpg"
-                    }
+                    src={`/images/news/${item.image}`}
                     alt={item.title}
                     width={300}
                     height={300}

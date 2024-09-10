@@ -1,4 +1,4 @@
-import { DUMMY_NEWS } from "@/dummy-data";
+import { getAllNews } from "@/lib/news";
 import { ArrowLeft } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -7,7 +7,7 @@ import { notFound } from "next/navigation";
 
 export default function ImageNewsPage({ params }) {
   const itemSlug = params.slugNews;
-  const newsItem = DUMMY_NEWS.find((newsItem) => newsItem.slug === itemSlug);
+  const newsItem = getAllNews().find((newsItem) => newsItem.slug === itemSlug);
 
   if (!newsItem) {
     notFound();
