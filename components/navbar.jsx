@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { HomeIcon, NewspaperIcon, MenuIcon } from "lucide-react";
+import { HomeIcon, NewspaperIcon, MenuIcon, Archive } from "lucide-react";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -37,6 +37,13 @@ export default function Navbar() {
                 <NewspaperIcon className="inline-block w-5 h-5 mr-1" />
                 News
               </Link>
+              <Link
+                href="/archive"
+                className="px-3 py-2 rounded-md text-sm font-medium hover:bg-neutral-50 hover:text-neutral-900 dark:hover:bg-neutral-900 dark:hover:text-neutral-50"
+              >
+                <Archive className="inline-block w-5 h-5 mr-1" />
+                Archive
+              </Link>
             </div>
           </div>
           <div className="md:hidden">
@@ -64,6 +71,14 @@ export default function Navbar() {
             >
               <NewspaperIcon className="inline-block w-5 h-5 mr-1" />
               News
+            </Link>
+            <Link
+              href="/archive"
+              onClick={handleIsOpen}
+              className="block px-3 py-2 rounded-md text-base font-medium hover:bg-neutral-50 hover:text-neutral-900 dark:hover:bg-neutral-900 dark:hover:text-neutral-50"
+            >
+              <Archive className="inline-block w-5 h-5 mr-1" />
+              Archive
             </Link>
           </div>
         </div>
