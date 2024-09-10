@@ -1,13 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
-import fs from "node:fs";
-
-import { CalendarIcon, ExternalLink, ArrowLeft } from "lucide-react";
 import { notFound } from "next/navigation";
+import { ArrowLeft } from "lucide-react";
 
+import { CalendarIcon, ExternalLink } from "lucide-react";
 import { DUMMY_NEWS } from "@/dummy-data";
 
-export default function Component({ params }) {
+export default function DetailNewsPage({ params }) {
   const newsSlug = params.slugNews;
   const newsItem = DUMMY_NEWS.find((newsItem) => newsItem.slug === newsSlug);
 
@@ -23,19 +22,20 @@ export default function Component({ params }) {
           <ArrowLeft className="w-6 h-6" />
           <p>Back</p>
         </Link>
-        <div className="flex md:flex-row flex-col gap-10">
-          <Image
-            src={
-              fs.existsSync(`public/images/news/${newsItem.image}`)
-                ? `/images/news/${newsItem.image}`
-                : "/images/news/default-image.jpg"
-            }
-            alt={newsItem.title || "Untitled Article"}
-            priority
-            width={400}
-            height={300}
-            className="rounded-lg"
-          />
+        <div className="flex md:flex-row flex-col md:items-start items-center gap-10">
+          <Link
+            href={`/news/${newsItem.slug}/image`}
+            className="min-h-96 min-w-96"
+          >
+            <Image
+              src={`/images/news/${newsItem.image}`}
+              alt={newsItem.title || "Untitled Article"}
+              priority
+              width={400}
+              height={300}
+              className="rounded-lg"
+            />
+          </Link>
           <div className="flex flex-col">
             <Link
               href="#"
@@ -51,7 +51,11 @@ export default function Component({ params }) {
               <CalendarIcon className="w-5 h-5 mr-2" />
               {newsItem.date && (
                 <time dateTime={newsItem.date}>
-                  {new Date(newsItem.date).toLocaleDateString()}
+                  {new Date(newsItem.date).toLocaleDateString("en-US", {
+                    year: "numeric",
+                    month: "2-digit",
+                    day: "2-digit",
+                  })}
                 </time>
               )}
               {!newsItem.date && <span>No date available</span>}
